@@ -12,11 +12,16 @@ public class ProductGroup
         ProductGroupContents = new List<ProductGroupContent>();
     }
 
+    public void ChangeLocation(Location location)
+    {
+        Location = location;
+    }
+
     public int ProductGroupId { get; private set; }
 
     public int? LocationId { get; private set; }
 
-    public virtual Location Location { get; private set; }
+    public Location Location { get; private set; }
 
-    public virtual ICollection<ProductGroupContent> ProductGroupContents { get; private set; } 
+    public ICollection<ProductGroupContent> ProductGroupContents { get; private set; } 
 }

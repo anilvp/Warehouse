@@ -18,9 +18,9 @@ public class DeliveryBatchContent
 
     public int? Quantity { get; private set; }
 
-    public virtual DeliveryBatch DeliveryBatch { get; private set; }
+    public DeliveryBatch DeliveryBatch { get; private set; }
 
-    public virtual Product Product { get; private set; }
+    public Product Product { get; private set; }
 
-    public virtual ICollection<ProductGroupContent> ProductGroupContents { get; private set; }
+    public ICollection<ProductGroupContent> ProductGroupContents { get; private set; }
 }

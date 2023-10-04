@@ -17,7 +17,7 @@ public class ProductGroupContent
 
     public int? Quantity { get; private set; }
 
-    public virtual DeliveryBatchContent DeliveryBatchContent { get; private set; }
+    public DeliveryBatchContent DeliveryBatchContent { get; private set; }
 
-    public virtual ProductGroup ProductGroup { get; private set; }
+    public ProductGroup ProductGroup { get; private set; }
 }

@@ -17,5 +17,5 @@ public class LocationType
 
     public string LocationType1 { get; private set; }
 
-    public virtual ICollection<Location> Locations { get; private set; }
+    public ICollection<Location> Locations { get; private set; }
 }

@@ -7,9 +7,11 @@ namespace Domain;
 
 public class Location
 {
-    private Location()
+    private Location() { }
+
+    public void ChangeProductGroup(ProductGroup productGroup)
     {
-        ProductGroups = new List<ProductGroup>();
+        ProductGroup = productGroup;
     }
 
     public int LocationId { get; private set; }
@@ -18,7 +20,11 @@ public class Location
 
     public int? LocationTypeId { get; private set; }
 
-    public virtual LocationType LocationType { get; private set; }
+    public int? DefaultProductId { get; private set; }
 
-    public virtual ICollection<ProductGroup> ProductGroups { get; private set; }
+    public Product DefaultProduct { get; private set; }
+
+    public LocationType LocationType { get; private set; }
+
+    public ProductGroup ProductGroup { get; private set; }
 }

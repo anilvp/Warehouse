@@ -16,5 +16,5 @@ public class DeliveryBatch
 
     public DateTime? Date { get; private set; }
 
-    public virtual ICollection<DeliveryBatchContent> DeliveryBatchContents { get; private set; }
+    public ICollection<DeliveryBatchContent> DeliveryBatchContents { get; private set; }
 }

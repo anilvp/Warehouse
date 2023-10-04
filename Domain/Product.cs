@@ -10,11 +10,14 @@ public class Product
     private Product()
     {
         DeliveryBatchContents = new List<DeliveryBatchContent>();
+        Locations = new List<Location>();
     }
 
     public int ProductId { get; private set; }
 
     public string Name { get; private set; }
 
-    public virtual ICollection<DeliveryBatchContent> DeliveryBatchContents { get; private set; } 
+    public ICollection<DeliveryBatchContent> DeliveryBatchContents { get; private set; }
+
+    public ICollection<Location> Locations { get; private set; }
 }
