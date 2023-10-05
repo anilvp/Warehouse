@@ -15,7 +15,7 @@ public class LocationType
 
     public int LocationTypeId { get; private set; }
 
-    public string LocationType1 { get; private set; }
+    public string LocationTypeName { get; private set; }
 
     public ICollection<Location> Locations { get; private set; }
 }

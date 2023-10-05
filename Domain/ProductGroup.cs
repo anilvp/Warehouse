@@ -12,9 +12,24 @@ public class ProductGroup
         ProductGroupContents = new List<ProductGroupContent>();
     }
 
-    public void ChangeLocation(Location location)
+    public ProductGroup(int locationId) : this()
     {
-        Location = location;
+        LocationId = locationId;
+    }
+
+    public ProductGroupContent AddProductGroupContent(int productId, int deliveryBtachId, int quantity)
+    {
+        var productGroupContent = ProductGroupContents.Where(pgc => pgc.ProductGroupId == ProductGroupId && pgc.ProductId == productId && pgc.DeliveryBatchId == deliveryBtachId).SingleOrDefault();
+        if (productGroupContent == null)
+        {
+            productGroupContent = new ProductGroupContent(ProductGroupId, productId, deliveryBtachId, quantity);
+            ProductGroupContents.Add(productGroupContent);
+        }
+        else
+        {
+            productGroupContent.AddQuantity(quantity);
+        }
+        return productGroupContent;
     }
 
     public int ProductGroupId { get; private set; }

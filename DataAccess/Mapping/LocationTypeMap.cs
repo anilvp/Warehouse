@@ -10,10 +10,9 @@ public class LocationTypeMap : IEntityTypeConfiguration<LocationType>
     {
         builder.HasKey(e => e.LocationTypeId).HasName("PK__Location__737D32F9C9B41B8E");
 
-        builder.Property(e => e.LocationType1)
+        builder.Property(e => e.LocationTypeName)
                .HasMaxLength(30)
-               .IsUnicode(false)
-               .HasColumnName("LocationType");
+               .IsUnicode(false);
     }
     public void Configure(EntityTypeBuilder<LocationType> builder)
     {

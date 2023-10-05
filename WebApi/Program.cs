@@ -20,7 +20,8 @@ builder.Services.AddScoped<DbContext, WarehouseContext>()
     .AddTransient<IGenericRepository<Product>, GenericRepository<Product>>()
     .AddTransient<IGenericRepository<ProductGroup>, GenericRepository<ProductGroup>>()
     .AddTransient<IGenericRepository<ProductGroupContent>, GenericRepository<ProductGroupContent>>()
-    .AddTransient<IReplenishProducts, ProductReplenisher>();
+    .AddTransient<IReplenishProducts, ProductReplenisher>()
+    .AddTransient<IMoveProducts, ProductMover>();
 
 
 builder.Services.AddControllers();
