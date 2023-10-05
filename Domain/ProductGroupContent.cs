@@ -9,6 +9,34 @@ public class ProductGroupContent
 {
     private ProductGroupContent() { }
 
+    public ProductGroupContent(int productGroupId, int productId, int deliveryBtachId, int quantity) : this()
+    {
+        ProductGroupId = productGroupId;
+        ProductId = productId;
+        DeliveryBatchId = deliveryBtachId;
+        Quantity = quantity;
+    }
+
+    public ProductGroupContent MoveProductGroupContent(Location newLocation, int quantityToMove)
+    {
+        ProductGroup newProductGroup = newLocation.ProductGroup ?? newLocation.CreateProductGroup();
+
+        if (quantityToMove > Quantity)
+        {
+            throw new Exception("Insufficient quantity");
+        }
+        else
+        {
+            Quantity -= quantityToMove;
+            return newProductGroup.AddProductGroupContent(ProductId, DeliveryBatchId, quantityToMove);
+        }
+    }
+
+    public void AddQuantity(int quantity)
+    {
+        Quantity += quantity;
+    }
+
     public int ProductGroupId { get; private set; }
 
     public int ProductId { get; private set; }

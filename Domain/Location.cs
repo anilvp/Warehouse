@@ -11,7 +11,21 @@ public class Location
 
     public void ChangeProductGroup(ProductGroup productGroup)
     {
-        ProductGroup = productGroup;
+        if (ProductGroup != null)
+        {
+            throw new Exception("Location is occupied");
+        }
+        else
+        {
+            ProductGroup = productGroup;
+        }
+    }
+
+    public ProductGroup CreateProductGroup()
+    {
+        ProductGroup productGroup = new ProductGroup(LocationId);
+        ChangeProductGroup(productGroup);
+        return productGroup;
     }
 
     public int LocationId { get; private set; }
