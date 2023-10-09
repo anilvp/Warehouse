@@ -32,8 +32,10 @@ public class ProductReplenisher : IReplenishProducts
         List<int> storageLocationTypeIds = _locationTypesRepo.Get(lt => lt.LocationTypeName == "Holding Zone" || lt.LocationTypeName == "Deep Storage" ||
                                                                         lt.LocationTypeName == "Storage" || lt.LocationTypeName == "Picking")
                                               .Select(lt => lt.LocationTypeId)
-                                              .Order()
                                               .ToList();
+        int holdingZoneId = _locationTypesRepo.Get(lt => lt.LocationTypeName == "Holding Zone")
+                                              .Select(lt => lt.LocationTypeId)
+                                              .SingleOrDefault();
 
         //Get default locations for the given product
         var productDefaultLocations = _locationsRepo.Get(l => l.DefaultProductId == replenishDto.ProductId)
@@ -60,7 +62,7 @@ public class ProductReplenisher : IReplenishProducts
         //Shuffle any remaining stock to Deep Storage
         if (productGroups.Count > count1)
         {
-            var deepStorageLocations = _locationsRepo.Get(l => l.LocationTypeId == storageLocationTypeIds[1])
+            var deepStorageLocations = _locationsRepo.Get(l => l.LocationTypeId == holdingZoneId)
                                                      .OrderBy(l => l.Code)
                                                      .Include(l => l.ProductGroup)
                                                      .Where(l => l.ProductGroup == null)
